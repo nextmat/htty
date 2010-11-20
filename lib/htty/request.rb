@@ -408,6 +408,18 @@ public
   def query_unset_all
     rebuild_uri :query => nil
   end
+  
+  def query_remove(name, value=nil)
+    return unless uri.query
+    entries = current_query_entries
+    entries.reverse.each do |entry|
+      if entry =~ field_matcher(name, value)
+        entries.delete(entry) 
+        break
+      end
+    end
+    rebuild_uri :query => entries.join('&')
+  end
 
   # Establishes a new #uri with the specified _scheme_.
   def scheme_set(scheme)
@@ -499,9 +511,13 @@ private
     header_set 'Content-Length', body.to_s.length
   end
 
-  def field_matcher(name)
+  def field_matcher(name, value=nil)
     escaped = Regexp.escape(name)
-    Regexp.new "^(#{escaped}|#{escaped}=.*)$"
+    if value
+      Regexp.new "^(#{escaped}\=#{Regexp.escape(value)})$"
+    else
+      Regexp.new "^(#{escaped}|#{escaped}\=.*)$"
+    end
   end
 
   def request!(method)
