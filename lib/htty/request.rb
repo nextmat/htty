@@ -382,6 +382,16 @@ public
     new_query = entries.empty? ? nil : entries.join('&')
     rebuild_uri :query => new_query
   end
+  
+  # Establishes a new #uri, adding the specified _value_ for the query-string
+  # parameter specificed by _name_. Will add a new key-value pair even if 
+  # _name_ already exists.
+  def query_add(name, value=nil)
+    entries = current_query_entries
+    entries << name + (value.nil? ? '' : "=#{value}")
+    new_query = entries.empty? ? nil : entries.join('&')
+    rebuild_uri :query => new_query
+  end
 
   # Establishes a new #uri, without the query-string parameter specified by
   # _name_.
