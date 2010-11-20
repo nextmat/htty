@@ -47,6 +47,7 @@ class HTTY::CLI::Commands::QueryAdd < HTTY::CLI::Command
     [HTTY::CLI::Commands::QuerySet,
      HTTY::CLI::Commands::QueryUnset,
      HTTY::CLI::Commands::QueryUnsetAll,
+     HTTY::CLI::Commands::QueryRemove,
      HTTY::CLI::Commands::Address]
   end
 

@@ -6,7 +6,7 @@ describe HTTY::CLI::Commands::QueryAdd do
     @session = HTTY::Session.new('')
   end
 
-  describe 'with no arguments' do
+  describe 'with key argument only' do
     describe 'without key already present' do
       it 'should add key' do
         query_add = create_query_add_and_perform('test')
@@ -23,7 +23,7 @@ describe HTTY::CLI::Commands::QueryAdd do
     end
   end
   
-  describe 'with one argument' do
+  describe 'with key and value arguments' do
     describe 'without key already present' do
       it 'should add key and value' do
         query_add = create_query_add_and_perform('test', 'true')
@@ -41,10 +41,10 @@ describe HTTY::CLI::Commands::QueryAdd do
   end
 
   def create_query_add_and_perform(*arguments)
-    query_set = HTTY::CLI::Commands::QueryAdd.new(:session => @session, 
+    query_add = HTTY::CLI::Commands::QueryAdd.new(:session => @session, 
                                                   :arguments => arguments)
-    query_set.perform
-    query_set
+    query_add.perform
+    query_add
   end
 
 end

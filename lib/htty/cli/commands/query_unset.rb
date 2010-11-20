@@ -47,6 +47,8 @@ class HTTY::CLI::Commands::QueryUnset < HTTY::CLI::Command
   def self.see_also_commands
     [HTTY::CLI::Commands::QuerySet,
      HTTY::CLI::Commands::QueryUnsetAll,
+     HTTY::CLI::Commands::QueryAdd,
+     HTTY::CLI::Commands::QueryRemove,
      HTTY::CLI::Commands::Address]
   end
 
