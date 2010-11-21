@@ -10,28 +10,28 @@ class HTTY::CLI; end
 
 module HTTY::CLI::Commands; end
 
-# Encapsulates the _query-set_ command.
+# Encapsulates the _query-add_ command.
 class HTTY::CLI::Commands::QueryAdd < HTTY::CLI::Command
 
   include HTTY::CLI::UrlEscaping
 
-  # Returns the name of a category under which help for the _query-set_ command
+  # Returns the name of a category under which help for the _query-add_ command
   # should appear.
   def self.category
     'Navigation'
   end
 
-  # Returns the arguments for the command-line usage of the _query-set_ command.
+  # Returns the arguments for the command-line usage of the _query-add_ command.
   def self.command_line_arguments
     'name [value]'
   end
 
-  # Returns the help text for the _query-set_ command.
+  # Returns the help text for the _query-add_ command.
   def self.help
     "Add a query-string parameter in the request's address"
   end
 
-  # Returns the extended help text for the _query-set_ command.
+  # Returns the extended help text for the _query-add_ command.
   def self.help_extended
     'Adds a query-string parameter used for the request. Does not ' +
     "communicate with the host.\n"                                             +
@@ -42,7 +42,7 @@ class HTTY::CLI::Commands::QueryAdd < HTTY::CLI::Command
     'The console prompt shows the address for the current request.'
   end
 
-  # Returns related command classes for the _query-set_ command.
+  # Returns related command classes for the _query-add_ command.
   def self.see_also_commands
     [HTTY::CLI::Commands::QuerySet,
      HTTY::CLI::Commands::QueryUnset,
